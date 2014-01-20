@@ -1,24 +1,25 @@
-*.gem
-*.rbc
-.bundle
-.config
+# rcov generated
 coverage
-InstalledFiles
-lib/bundler/man
-pkg
+coverage.data
+
+# rdoc generated
 rdoc
-spec/reports
-test/tmp
-test/version_tmp
-tmp
 
-# YARD artifacts
+# yard generated
+doc
 .yardoc
-_yardoc
-doc/
 
-# RVM files
+# bundler
+.bundle
+
+# jeweler generated
+pkg
+
+# mac os specific
+.DS_Store
+
+# vim
+*.swp
+
+# rvm
 .ruby-*
-
-# Gem excludes
-Gemfile.lock
