@@ -1,6 +1,6 @@
 # Based on https://github.com/jwkoelewijn/batsir/blob/master/spec/batsir/config_spec.rb
 
-require_relative '../test_helper'
+require File.join(File.dirname(__FILE__), '../test_helper')
 require_relative '../../lib/message_bird/config'
 
 describe MessageBird::Config do

@@ -1,10 +1,15 @@
-gem 'minitest' # demand gem version
+require 'rubygems'
+
+gem "minitest"
 require 'minitest/autorun'
-require 'turn'
-# require 'rr'
 require 'ostruct'
+# require 'rr'
 
-# Turn.config.format = :dot
-
-$: << File.expand_path('../lib', File.dirname(__FILE__))
-
+# Small hack to enable require_relative
+unless Kernel.respond_to?(:require_relative)
+  module Kernel
+    def require_relative(path)
+      require File.join(File.dirname(caller[0]), path.to_str)
+    end
+  end
+end

@@ -8,8 +8,8 @@ module MessageBird
 
       def defaults
         @defaults ||= {
-          api_url:    "https://api.messagebird.com/api/sms",
-          test_mode:  true
+          :api_url =>     "https://api.messagebird.com/api/sms",
+          :test_mode =>   true
         }
       end
 

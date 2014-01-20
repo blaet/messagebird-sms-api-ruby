@@ -1,4 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'rake'
-gem 'turn'
+group :test do
+  gem 'rake'
+  gem 'minitest'
+  gem 'rr'
+end
