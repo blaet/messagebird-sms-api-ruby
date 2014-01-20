@@ -8,4 +8,4 @@ Implementation of the MessageBird text (sms) service API
 Based on the API example on https://www.messagebird.com/nl/sms-api#ruby
 
 ## Licence
-See the LICENSE file for licensing information.
+See the LICENCE file for licensing information.
