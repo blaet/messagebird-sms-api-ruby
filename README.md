@@ -1,4 +1,5 @@
 [![Code Climate](https://codeclimate.com/github/blaet/message_bird.png)](https://codeclimate.com/github/blaet/message_bird)
+[![Build Status](https://travis-ci.org/blaet/message_bird.png?branch=master)](https://travis-ci.org/blaet/message_bird)
 
 # Messagebird API gem
 
