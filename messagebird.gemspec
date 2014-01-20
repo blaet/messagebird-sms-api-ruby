@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.authors = ["Bram de Vries"]
   s.date = "2014-01-20"
   s.description = "Implementation of the MessageBird text (sms) service API"
-  s.email = "dev@blaet.net"
+  s.email = "bram.devries@nedap.com"
   s.extra_rdoc_files = [
     "README.md"
   ]
@@ -26,10 +26,12 @@ Gem::Specification.new do |s|
     "lib/message_bird.rb",
     "lib/message_bird/config.rb",
     "lib/tasks/test.rb",
+    "messagebird.gemspec",
+    "test/helper.rb",
     "test/message_bird/config_test.rb",
     "test/message_bird_test.rb"
   ]
-  s.homepage = "http://github.com/blaet/messagebird"
+  s.homepage = "http://github.com/nedap/messagebird"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "2.1.11"
@@ -40,11 +42,14 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_development_dependency(%q<jeweler>, ["~> 2.0.0"])
+      s.add_development_dependency(%q<simplecov>, [">= 0"])
     else
       s.add_dependency(%q<jeweler>, ["~> 2.0.0"])
+      s.add_dependency(%q<simplecov>, [">= 0"])
     end
   else
     s.add_dependency(%q<jeweler>, ["~> 2.0.0"])
+    s.add_dependency(%q<simplecov>, [">= 0"])
   end
 end
 

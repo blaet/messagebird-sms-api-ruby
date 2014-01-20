@@ -19,11 +19,11 @@ begin
   Jeweler::Tasks.new do |gem|
     # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
     gem.name = "messagebird"
-    gem.homepage = "http://github.com/blaet/messagebird"
+    gem.homepage = "http://github.com/nedap/messagebird"
     gem.license = "MIT"
     gem.summary = %Q{MessageBird API}
     gem.description = %Q{Implementation of the MessageBird text (sms) service API}
-    gem.email = "dev@blaet.net"
+    gem.email = "bram.devries@nedap.com"
     gem.authors = ["Bram de Vries"]
     # dependencies defined in Gemfile
   end
@@ -40,13 +40,3 @@ Rake::TestTask.new(:test) do |test|
 end
 
 task :default => :test
-
-# require 'rdoc/task'
-# Rake::RDocTask.new do |rdoc|
-#   version = File.exist?('VERSION') ? File.read('VERSION') : ""
-
-#   rdoc.rdoc_dir = 'rdoc'
-#   rdoc.title = "messagebird #{version}"
-#   rdoc.rdoc_files.include('README*')
-#   rdoc.rdoc_files.include('lib/**/*.rb')
-# end

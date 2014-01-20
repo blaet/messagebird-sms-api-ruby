@@ -1,5 +1,5 @@
-[![Code Climate](https://codeclimate.com/github/blaet/messagebird.png)](https://codeclimate.com/github/blaet/messagebird)
-[![Build Status](https://travis-ci.org/blaet/messagebird.png?branch=master)](https://travis-ci.org/blaet/messagebird)
+[![Code Climate](https://codeclimate.com/github/nedap/messagebird.png)](https://codeclimate.com/github/nedap/messagebird)
+[![Build Status](https://travis-ci.org/nedap/messagebird.png?branch=master)](https://travis-ci.org/nedap/messagebird)
 
 # MessageBird API gem
 Implementation of the MessageBird text (sms) service API
