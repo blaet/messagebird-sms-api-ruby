@@ -19,3 +19,6 @@ doc/
 
 # RVM files
 .ruby-*
+
+# Gem excludes
+Gemfile.lock
