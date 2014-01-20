@@ -7,7 +7,7 @@ group :test do
 end
 
 group :development do
-  gem "jeweler", "~> 2.0.0", :require => true
+  gem "jeweler", "~> 2.0.0", :require => false
+  gem 'simplecov', :require => false
   # gem "rdoc", "~> 3.12"
-  # gem "rcov", ">= 0"
 end
