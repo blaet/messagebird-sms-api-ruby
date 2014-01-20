@@ -1,7 +1,7 @@
 # Based on https://github.com/jwkoelewijn/batsir/blob/master/spec/batsir/config_spec.rb
 
-require File.join(File.dirname(__FILE__), '../test_helper')
-require_relative '../../lib/message_bird/config'
+require 'helper'
+require 'message_bird/config'
 
 describe MessageBird::Config do
   let(:api_url_string){ 'https://api.messagebird.com/api/sms' }
