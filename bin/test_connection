@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
+
+require 'messagebird'
+
+MessageBird.configure do
+  username    'nedappep'
+  password    'testpass'
+  sender_name 'NedapPep'
+end
+
+MessageBird.send_text_message("31648951497", "testbericht")
