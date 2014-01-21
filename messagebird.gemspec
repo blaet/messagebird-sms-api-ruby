@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
     "bin/test_connection",
     "lib/messagebird.rb",
     "lib/messagebird/config.rb",
+    "lib/messagebird/deliverable.rb",
     "lib/messagebird/helpers.rb",
     "lib/messagebird/http/request_url.rb",
     "lib/messagebird/http/sms.rb",
@@ -34,8 +35,10 @@ Gem::Specification.new do |s|
     "messagebird.gemspec",
     "test/helper.rb",
     "test/messagebird/config_test.rb",
+    "test/messagebird/deliverable_test.rb",
     "test/messagebird/helpers_test.rb",
     "test/messagebird/http/request_url_test.rb",
+    "test/messagebird/http/sms_test.rb",
     "test/messagebird/sms_test.rb",
     "test/messagebird_test.rb"
   ]

@@ -3,6 +3,10 @@ module MessageBird
     class << self
       include Helpers
 
+      def deliver(originator, recipients, message, options={})
+        new(originator, recipients, message, options).deliver
+      end
+
       def new(originator, recipients, message, options={})
         module_name = options.delete(:module) || config.module
         klass_for(module_name).new(originator, recipients, message, options)

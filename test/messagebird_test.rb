@@ -1,14 +1,7 @@
 require 'helper'
 require 'messagebird'
 
-module MessageBirdHelper
-  def format_phone_numbers(input)
-    subject.send :format_phone_numbers, input
-  end
-end
-
 describe MessageBird do
-  include MessageBirdHelper
 
   subject{ MessageBird }
   let(:config){ MessageBird::Config }
@@ -27,14 +20,10 @@ describe MessageBird do
     end
   end
 
-  describe '#format_phone_numbers' do
-    it 'converts an integer to string' do
-      format_phone_numbers(31541471696).must_equal "31541471696"
-    end
-
-    it 'converts an enumerable into a comma-separated string' do
-      numbers = [3154147100, "315472000"]
-      format_phone_numbers(numbers).must_equal "3154147100,315472000"
+  describe '#send_text_message' do
+    it 'command the SMS object to deliver a message' do
+      mock(MessageBird::SMS).deliver(1,2,'testmsg', {:test => :value})
+      subject.deliver(1,2,'testmsg', {:test => :value})
     end
   end
 
