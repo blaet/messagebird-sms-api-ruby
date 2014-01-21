@@ -13,6 +13,7 @@ Gem::Specification.new do |s|
   s.date = "2014-01-21"
   s.description = "Implementation of the MessageBird text (sms) service API"
   s.email = "bram.devries@nedap.com"
+  s.executables = ["test_connection"]
   s.extra_rdoc_files = [
     "README.md"
   ]
@@ -23,13 +24,19 @@ Gem::Specification.new do |s|
     "README.md",
     "Rakefile",
     "VERSION",
+    "bin/test_connection",
     "lib/messagebird.rb",
     "lib/messagebird/config.rb",
+    "lib/messagebird/helpers.rb",
     "lib/messagebird/http/request_url.rb",
+    "lib/messagebird/http/sms.rb",
+    "lib/messagebird/sms.rb",
     "messagebird.gemspec",
     "test/helper.rb",
     "test/messagebird/config_test.rb",
+    "test/messagebird/helpers_test.rb",
     "test/messagebird/http/request_url_test.rb",
+    "test/messagebird/sms_test.rb",
     "test/messagebird_test.rb"
   ]
   s.homepage = "http://github.com/nedap/messagebird"
