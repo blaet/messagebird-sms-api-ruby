@@ -1,5 +1,4 @@
 require 'helper'
-require 'messagebird/http/request_url'
 
 describe MessageBird::HTTP::RequestURL do
   let(:subject_class){ MessageBird::HTTP:RequestURL }

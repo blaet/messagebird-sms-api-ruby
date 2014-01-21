@@ -1,6 +1,11 @@
 $LOAD_PATH.unshift File.dirname(__FILE__)
 
 require 'messagebird/config'
+require 'messagebird/helpers'
+require 'messagebird/sms'
+require 'messagebird/http/sms'
+require 'messagebird/http/request_url'
+
 require 'pp'
 require 'net/http'
 require "net/https"
