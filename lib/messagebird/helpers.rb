@@ -12,5 +12,9 @@ module MessageBird
       Object.module_eval("::#{$1}", __FILE__, __LINE__)
     end
 
+    def escape(str)
+      URI.escape(str)
+    end
+
   end
 end

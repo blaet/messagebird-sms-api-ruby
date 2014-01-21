@@ -29,4 +29,11 @@ describe MessageBird::Helpers do
       assert_raises(NameError) { subject.constantize(':::String') }
     end
   end
+
+  describe '#escape' do
+    it 'URI escapes the given string' do
+      mock(URI).escape("teststring")
+      subject.escape "teststring"
+    end
+  end
 end
