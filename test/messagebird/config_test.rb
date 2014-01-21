@@ -1,7 +1,7 @@
 # Based on https://github.com/jwkoelewijn/batsir/blob/master/spec/batsir/config_spec.rb
 
 require 'helper'
-require 'message_bird/config'
+require 'messagebird/config'
 
 describe MessageBird::Config do
   let(:api_url_string){ 'https://api.messagebird.com/api/sms' }

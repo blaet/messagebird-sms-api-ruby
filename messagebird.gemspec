@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bram de Vries"]
-  s.date = "2014-01-20"
+  s.date = "2014-01-21"
   s.description = "Implementation of the MessageBird text (sms) service API"
   s.email = "bram.devries@nedap.com"
   s.extra_rdoc_files = [
@@ -23,13 +23,14 @@ Gem::Specification.new do |s|
     "README.md",
     "Rakefile",
     "VERSION",
-    "lib/message_bird.rb",
-    "lib/message_bird/config.rb",
-    "lib/tasks/test.rb",
+    "lib/messagebird.rb",
+    "lib/messagebird/config.rb",
+    "lib/messagebird/http/request_url.rb",
     "messagebird.gemspec",
     "test/helper.rb",
-    "test/message_bird/config_test.rb",
-    "test/message_bird_test.rb"
+    "test/messagebird/config_test.rb",
+    "test/messagebird/http/request_url_test.rb",
+    "test/messagebird_test.rb"
   ]
   s.homepage = "http://github.com/nedap/messagebird"
   s.licenses = ["MIT"]

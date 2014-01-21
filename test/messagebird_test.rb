@@ -1,7 +1,5 @@
-# require File.join(File.dirname(__FILE__), 'test_helper')
 require 'helper'
-
-require 'message_bird'
+require 'messagebird'
 
 describe MessageBird do
 

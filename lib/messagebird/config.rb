@@ -8,7 +8,11 @@ module MessageBird
 
       def defaults
         @defaults ||= {
+          :module =>      :http,
           :api_url =>     "https://api.messagebird.com/api/sms",
+          :username =>    'replace_me',
+          :password =>    'replace_me',
+          :sender_name => 'replace_me',
           :test_mode =>   true
         }
       end
