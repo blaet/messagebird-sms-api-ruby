@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 
 group :test do
   gem 'bundler', '~> 1.0'
-  gem 'minitest'
   gem 'rake'
-  gem 'rr'
+  gem 'minitest', :require => false
+  gem 'rr',       :require => false
 end
 
 group :development do
