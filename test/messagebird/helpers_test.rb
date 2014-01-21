@@ -24,5 +24,9 @@ describe MessageBird::Helpers do
     it 'raises a NameError when class is not found' do
       assert_raises(NameError) { subject.constantize('NonExistentClass') }
     end
+
+    it 'raises a NameError when string not a valid class name' do
+      assert_raises(NameError) { subject.constantize(':::String') }
+    end
   end
 end
