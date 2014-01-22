@@ -1,8 +1,9 @@
-[![Code Climate](https://codeclimate.com/github/nedap/messagebird.png)](https://codeclimate.com/github/nedap/messagebird)
-[![Build Status](https://travis-ci.org/nedap/messagebird.png?branch=master)](https://travis-ci.org/nedap/messagebird)
+[![Gem Version](https://badge.fury.io/rb/messagebird.png)](http://badge.fury.io/rb/messagebird)
+[![Code Climate](https://codeclimate.com/github/nedap/messagebird-sms-api-ruby.png)](https://codeclimate.com/github/nedap/messagebird-sms-api-ruby)
+[![Build Status](https://travis-ci.org/nedap/messagebird-sms-api-ruby.png?branch=master)](https://travis-ci.org/nedap/messagebird-sms-api-ruby)
 
 # MessageBird API gem
-Implementation of the MessageBird text (sms) service API
+Implementation of the MessageBird text (sms) service API for Ruby.
 
 ## Compatibility
 Development is focussed on MRI 1.9.3 and 2.0.0.
