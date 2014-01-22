@@ -3,13 +3,13 @@ module MessageBird
     class << self
       include Helpers
 
-      def deliver(originator, recipients, message, options={})
-        new(originator, recipients, message, options).deliver
+      def deliver(originator, recipients, message, options={}, &block)
+        new(originator, recipients, message, options, &block).deliver
       end
 
-      def new(originator, recipients, message, options={})
+      def new(originator, recipients, message, options={}, &block)
         module_name = options.delete(:module) || config.module
-        klass_for(module_name).new(originator, recipients, message, options)
+        klass_for(module_name).new(originator, recipients, message, options, &block)
       end
 
     private

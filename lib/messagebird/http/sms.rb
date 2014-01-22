@@ -5,16 +5,17 @@ module MessageBird::HTTP
     attr_reader :originator, :recipients, :message
     attr_writer :username, :api_url
 
-    def initialize(originator, recipients, message, options = {})
+    def initialize(originator, recipients, message, options = {}, &block)
       @originator = originator
       @recipients = format_recipients(recipients)
       @message    = URI.escape(message)
+      @callback   = block
 
       set_optional_variables(options)
     end
 
     def deliver
-      Sender.deliver(self)
+      Sender.deliver(self, &@callback)
     end
 
     def uri

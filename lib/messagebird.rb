@@ -16,8 +16,8 @@ require 'messagebird/http/response'
 module MessageBird
   class << self
 
-    def deliver(originator, recipients, message, options={})
-      MessageBird::SMS.deliver(originator, recipients, message, options)
+    def deliver(originator, recipients, message, options={}, &block)
+      MessageBird::SMS.deliver(originator, recipients, message, options, &block)
     end
 
     def configure(&block)

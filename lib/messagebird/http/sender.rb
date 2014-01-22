@@ -5,8 +5,8 @@ module MessageBird::HTTP
       attr_writer :response_factory
 
       def deliver(sms, &block)
-        ensure_valid_sms!(sms, &block)
-        send_sms(sms)
+        ensure_valid_sms!(sms)
+        send_sms(sms, &block)
       end
 
     private

@@ -11,4 +11,6 @@ MessageBird.configure do
   sender_name 'NedapPep'
 end
 
-MessageBird.deliver("NedapPep", "31648951497", "testbericht")
+MessageBird.deliver("NedapPep", "31648951497", "testbericht") do |response|
+  pp response
+end
