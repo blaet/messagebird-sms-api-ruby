@@ -10,4 +10,4 @@ MessageBird.configure do
   sender_name 'NedapPep'
 end
 
-MessageBird.send_text_message("31648951497", "testbericht")
+MessageBird.deliver("NedapPep", "31648951497", "testbericht")

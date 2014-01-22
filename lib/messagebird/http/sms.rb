@@ -1,6 +1,8 @@
 module MessageBird::HTTP
   class SMS < MessageBird::Deliverable
+    include MessageBird::Helpers
 
+    attr_reader :originator, :recipients, :message
     attr_writer :username, :api_url
 
     def initialize(originator, recipients, message, options = {})
@@ -12,33 +14,19 @@ module MessageBird::HTTP
     end
 
     def deliver
-      url = create_url(phone_numbers, message)
-      uri = create_uri(url)
-
-      connection = create_connection(uri)
-
-      request = Net::HTTP::Get.new(uri.request_uri)
-      response = connection.request(request)
-      pp response.body
+      Sender.deliver(self)
     end
 
-    def create_connection(uri)
-      Net::HTTP.new(uri.host, uri.port).tap do |http|
-        http.use_ssl = true
-        # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-      end
+    def uri
+      @uri ||= URI.parse(url)
     end
 
-    def create_uri(url)
-      URI.parse(url)
+    def request_uri
+      uri.request_uri
     end
 
-    def create_url(phone_numbers, message)
-
-      destination = format_phone_numbers(phone_numbers)
-      message     = URI.escape(message)
-
-      "#{api_url}?username=#{username}&password=#{password}&sender=#{sender}&test=#{test_mode}&destination=#{destination}&body=#{message}"
+    def url
+      @url ||= "#{api_url}?username=#{username}&password=#{password}&sender=#{originator}&test=#{test_mode}&destination=#{recipients}&body=#{message}"
     end
 
     def username
