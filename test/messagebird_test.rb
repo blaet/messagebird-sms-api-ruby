@@ -1,5 +1,4 @@
 require 'helper'
-require 'messagebird'
 
 describe MessageBird do
 
