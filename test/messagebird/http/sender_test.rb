@@ -67,7 +67,7 @@ describe MessageBird::HTTP::Sender do
 
   describe '#send_request' do
     it 'calls the response_factory' do
-      mock(subject).response_factory(:bar).once
+      mock(subject.send(:response_factory)).call(:bar).once
       subject.send :send_request, mock_connection, 'bar'
     end
   end

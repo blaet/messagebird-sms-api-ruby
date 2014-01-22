@@ -23,7 +23,7 @@ module MessageBird::HTTP
       end
 
       def send_request(connection, request)
-        response_factory( connection.request(request) )
+        response_factory.call( connection.request(request) )
       end
 
       def create_connection(uri)
