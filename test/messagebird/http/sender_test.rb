@@ -5,7 +5,7 @@ describe MessageBird::HTTP::Sender do
   let(:uri){ OpenStruct.new(:host => :foo, :port => :bar) }
   let(:mock_connection){ OpenStruct.new(:use_ssl => nil) }
   let(:sms){ OpenStruct.new(:uri => uri)}
-  let(:response_factory){ ->(foo){'FooBar'} }
+  let(:response_factory){ lambda{|foo|'FooBar'} }
 
 
   subject{ MessageBird::HTTP::Sender }
