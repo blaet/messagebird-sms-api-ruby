@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bram de Vries"]
-  s.date = "2014-01-21"
+  s.date = "2014-01-22"
   s.description = "Implementation of the MessageBird text (sms) service API"
   s.email = "bram.devries@nedap.com"
   s.executables = ["test_connection"]
@@ -29,7 +29,9 @@ Gem::Specification.new do |s|
     "lib/messagebird/config.rb",
     "lib/messagebird/deliverable.rb",
     "lib/messagebird/helpers.rb",
-    "lib/messagebird/http/request_url.rb",
+    "lib/messagebird/http/response.rb",
+    "lib/messagebird/http/response_code.rb",
+    "lib/messagebird/http/sender.rb",
     "lib/messagebird/http/sms.rb",
     "lib/messagebird/sms.rb",
     "messagebird.gemspec",
@@ -37,7 +39,9 @@ Gem::Specification.new do |s|
     "test/messagebird/config_test.rb",
     "test/messagebird/deliverable_test.rb",
     "test/messagebird/helpers_test.rb",
-    "test/messagebird/http/request_url_test.rb",
+    "test/messagebird/http/response_code_test.rb",
+    "test/messagebird/http/response_test.rb",
+    "test/messagebird/http/sender_test.rb",
     "test/messagebird/http/sms_test.rb",
     "test/messagebird/sms_test.rb",
     "test/messagebird_test.rb"
