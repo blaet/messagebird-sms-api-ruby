@@ -19,7 +19,7 @@ begin
   Jeweler::Tasks.new do |gem|
     # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
     gem.name = "messagebird"
-    gem.homepage = "http://github.com/nedap/messagebird"
+    gem.homepage = "http://github.com/nedap/messagebird-sms-api-ruby"
     gem.license = "MIT"
     gem.summary = %Q{MessageBird API}
     gem.description = %Q{Implementation of the MessageBird text (sms) service API}
