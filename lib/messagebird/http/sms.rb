@@ -59,7 +59,7 @@ module MessageBird::HTTP
 
     def set_optional_variables(options = {})
       options.each do |k,v|
-        send(k.to_sym, v)
+        send("#{k}=".to_sym, v)
       end
     end
 
@@ -68,7 +68,7 @@ module MessageBird::HTTP
     end
 
     def test_mode=(bool)
-      raise ArgumentError unless bool.is_a?(Boolean)
+      raise ArgumentError unless !!bool == bool
       @test_mode = bool ? 1 : 0
     end
 

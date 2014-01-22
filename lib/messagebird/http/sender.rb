@@ -2,21 +2,28 @@ module MessageBird::HTTP
   class Sender
     class << self
 
-      def deliver(sms)
-        raise ArgumentError unless sms.is_a? MessageBird::HTTP::SMS
+      attr_writer :response_factory
 
-        response = send_sms(sms)
+      def deliver(sms, &block)
+        ensure_valid_sms!(sms, &block)
+        send_sms(sms)
       end
 
     private
 
-      def send_sms(sms)
+      def send_sms(sms, &block)
         connection = create_connection(sms.uri)
-        request    = Net::HTTP::Get.new(sms.request_uri)
+        request    = create_request(sms.request_uri)
 
-        response = Response.new( connection.request(request) )
-        pp response
-        response
+        response = send_request(connection, request)
+
+        if block_given?
+          yield response
+        end
+      end
+
+      def send_request(connection, request)
+        response_factory( connection.request(request) )
       end
 
       def create_connection(uri)
@@ -24,6 +31,18 @@ module MessageBird::HTTP
           http.use_ssl = true
           # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
         end
+      end
+
+      def create_request(request_uri)
+        Net::HTTP::Get.new(request_uri)
+      end
+
+      def ensure_valid_sms!(obj)
+        raise ArgumentError unless obj.is_a? MessageBird::HTTP::SMS
+      end
+
+      def response_factory
+        @response_factory ||= Response.public_method(:new)
       end
 
     end
