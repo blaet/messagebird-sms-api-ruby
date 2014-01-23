@@ -8,7 +8,9 @@ Implementation of the MessageBird SMS API for Ruby.
 
 ## Installation
 Just paste the following in your Gemfile:
-  gem 'messagebird'
+```ruby
+gem 'messagebird'
+```
 
 ## Compatibility
 Development is focussed on MRI 1.9.3 and 2.0.0.
