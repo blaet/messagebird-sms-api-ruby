@@ -2,8 +2,12 @@
 [![Code Climate](https://codeclimate.com/github/nedap/messagebird-sms-api-ruby.png)](https://codeclimate.com/github/nedap/messagebird-sms-api-ruby)
 [![Build Status](https://travis-ci.org/nedap/messagebird-sms-api-ruby.png?branch=master)](https://travis-ci.org/nedap/messagebird-sms-api-ruby)
 
-# MessageBird API gem
-Implementation of the MessageBird text (sms) service API for Ruby.
+# MessageBird SMS API for Ruby
+Implementation of the MessageBird SMS API for Ruby.
+
+## Installation
+Just paste the following in your Gemfile:
+  gem 'messagebird'
 
 ## Compatibility
 Development is focussed on MRI 1.9.3 and 2.0.0.
@@ -20,7 +24,7 @@ Legacy support for MRI 1.8.7, and experimental support for MRI 2.1.0 and JRuby 1
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
 ## Credits
-Based on the API example on https://www.messagebird.com/nl/sms-api#ruby
+Based on the API example at https://www.messagebird.com/nl/sms-api#ruby
 
 ## Licence
 See the LICENCE file for licensing information.
