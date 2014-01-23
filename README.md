@@ -29,5 +29,5 @@ Legacy support for MRI 1.8.7, and experimental support for MRI 2.1.0 and JRuby 1
 ## Credits
 Based on the API example at https://www.messagebird.com/nl/sms-api#ruby
 
-## Licence
-See the LICENCE file for licensing information.
+## License
+See the LICENSE file for licensing information.
