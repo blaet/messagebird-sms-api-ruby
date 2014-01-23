@@ -1,10 +1,10 @@
 require 'rubygems'
 require 'bundler'
 
-# Use SimpleCov when available
+# Use Coveralls/SimpleCov when available
 begin
-  require 'simplecov'
-  SimpleCov.start
+  require 'coveralls'
+  Coveralls.wear!
 rescue LoadError
 end
 
