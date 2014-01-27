@@ -6,11 +6,11 @@ require 'pp'
 require 'messagebird'
 
 MessageBird.configure do
-  username    'nedappep'
-  password    'testpass'
-  sender_name 'NedapPep'
+  username    'my-user-name'
+  password    'my-pass-word'
+  sender_name 'GemTester'
 end
 
-MessageBird.deliver("NedapPep", "31648951497", "test message") do |response|
+MessageBird.deliver("GemTester", "31600000000", "test message") do |response|
   pp response
 end
