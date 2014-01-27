@@ -1,4 +1,4 @@
-# Based on https://github.com/jwkoelewijn/batsir/blob/master/lib/batsir/config.rb
+# Config class based on https://github.com/jwkoelewijn/batsir/blob/master/lib/batsir/config.rb
 
 module MessageBird
   class Config

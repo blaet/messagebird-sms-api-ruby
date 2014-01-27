@@ -22,7 +22,7 @@ begin
     gem.homepage = "http://github.com/nedap/messagebird-sms-api-ruby"
     gem.license = "MIT"
     gem.summary = %Q{MessageBird API for Ruby}
-    gem.description = %Q{Implementation of the MessageBird text (sms) service API}
+    gem.description = %Q{Implementation of the MessageBird SMS API for Ruby}
     gem.email = "bram.devries@nedap.com"
     gem.authors = ["Bram de Vries"]
     # dependencies defined in Gemfile
