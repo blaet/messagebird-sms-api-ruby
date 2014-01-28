@@ -4,12 +4,42 @@ module MessageBirdHTTPSMSHelper
   def format_recipients(input)
     subject.send :format_recipients, input
   end
+
+  def sender_telephone_number?(input)
+    subject.send :sender_telephone_number?, input
+  end
+
+  def sender_string?(input)
+    subject.send :sender_string?, input
+  end
 end
 
 describe MessageBird::HTTP::SMS do
   include MessageBirdHTTPSMSHelper
 
-  subject{ MessageBird::HTTP::SMS.new('sender',3154447100,'message',{}) }
+  let(:subject_class){ MessageBird::HTTP::SMS }
+
+  subject{ subject_class.new('sender',3154447100,'message',{}) }
+
+  describe '#initialize' do
+    describe '@sender' do
+      describe 'alphanumeric' do
+        it 'accepts alphanumerism' do
+
+        end
+      end
+
+      describe 'telephone number' do
+        it 'accepts telephone numbers' do
+
+        end
+      end
+
+      it 'is limited to 11 characters' do
+
+      end
+    end
+  end
 
   describe '#api_url' do
     it 'retrieves the api_url from the Config object' do
@@ -31,6 +61,18 @@ describe MessageBird::HTTP::SMS do
     end
   end
 
+  describe '#ensure_sender_valid!' do
+    it 'works as designed' do
+      stub(subject).sender_valid?{true}
+      subject.send :ensure_sender_valid!, 'test'
+
+      stub(subject).sender_valid?{false}
+      assert_raises(MessageBird::HTTP::SMS::SenderInvalid){
+        subject.send :ensure_sender_valid!, 'test'
+      }
+    end
+  end
+
   describe '#format_recipients' do
     it 'converts an integer to string' do
       format_recipients(31541471696).must_equal "31541471696"
@@ -39,6 +81,76 @@ describe MessageBird::HTTP::SMS do
     it 'converts an enumerable into a comma-separated string' do
       numbers = [3154147100, "315472000"]
       format_recipients(numbers).must_equal "3154147100,315472000"
+    end
+  end
+
+  describe '#sender=' do
+    it 'sets the sender when valid' do
+      subject.send :sender=, 'footest'
+      subject.sender.must_equal 'footest'
+    end
+
+    it 'throws an exception if sender not valid' do
+      assert_raises(MessageBird::HTTP::SMS::SenderInvalid){
+        subject.send :sender=, 'garbledeegook'
+      }
+    end
+  end
+
+  describe '#sender_telephone_number?' do
+    it 'detects valid numbers' do
+      assert sender_telephone_number?('+31571000000')
+      assert sender_telephone_number?('+31671000000')
+      assert sender_telephone_number?('+15551234567')
+    end
+
+    it 'detects invalid numbers by length' do
+      refute sender_telephone_number?('+315710000001') # too long
+      refute sender_telephone_number?('+3157100001') # too short
+    end
+
+    it 'detects invalid numbers by spaces' do
+      refute sender_telephone_number?('+31571000 00')
+      refute sender_telephone_number?(' +31571000 0')
+      refute sender_telephone_number?('+3157100000 ')
+    end
+  end
+
+  describe '#sender_string?' do
+    it 'detects valid strings' do
+      assert sender_string?('A')
+      assert sender_string?('StaffingAge')
+    end
+
+    it 'detects invalid strings by length' do
+      refute sender_string?('StaffingAgency')
+      refute sender_string?('')
+    end
+
+    it 'detects invalid strings by characters' do
+      refute sender_string?('Nedap Flex')
+      refute sender_string?(' Nedap')
+      refute sender_string?('Nedap ')
+    end
+  end
+
+  describe '#sender_valid?' do
+    it 'works as designed' do
+      stub(subject).sender_string?{true}
+      stub(subject).sender_telephone_number?{true}
+      assert subject.send(:sender_valid?, 'test')
+
+      stub(subject).sender_string?{false}
+      stub(subject).sender_telephone_number?{true}
+      assert subject.send(:sender_valid?, 'test')
+
+      stub(subject).sender_string?{true}
+      stub(subject).sender_telephone_number?{false}
+      assert subject.send(:sender_valid?, 'test')
+
+      stub(subject).sender_string?{false}
+      stub(subject).sender_telephone_number?{false}
+      refute subject.send(:sender_valid?, 'test')
     end
   end
 

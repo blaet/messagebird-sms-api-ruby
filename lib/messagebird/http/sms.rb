@@ -2,11 +2,11 @@ module MessageBird::HTTP
   class SMS < MessageBird::Deliverable
     include MessageBird::Helpers
 
-    attr_reader :originator, :recipients, :message
+    attr_reader :sender, :recipients, :message
     attr_writer :username, :api_url
 
-    def initialize(originator, recipients, message, options = {}, &block)
-      @originator = originator
+    def initialize(sender_name, recipients, message, options = {}, &block)
+      sender      = sender_name
       @recipients = format_recipients(recipients)
       @message    = URI.escape(message)
       @callback   = block
@@ -27,7 +27,7 @@ module MessageBird::HTTP
     end
 
     def url
-      @url ||= "#{api_url}?username=#{username}&password=#{password}&sender=#{originator}&test=#{test_mode}&destination=#{recipients}&body=#{message}"
+      @url ||= "#{api_url}?username=#{username}&password=#{password}&sender=#{sender}&test=#{test_mode}&destination=#{recipients}&body=#{message}"
     end
 
     def username
@@ -73,5 +73,27 @@ module MessageBird::HTTP
       @test_mode = bool ? 1 : 0
     end
 
+    def sender=(input)
+      ensure_sender_valid!(input)
+      @sender = input
+    end
+
+    def ensure_sender_valid!(input)
+      raise SenderInvalid.new(input) unless sender_valid?(input)
+    end
+
+    def sender_valid?(input)
+      sender_telephone_number?(input) || sender_string?(input)
+    end
+
+    def sender_string?(input)
+      input =~ /^[a-zA-Z0-9]{1,11}$/
+    end
+
+    def sender_telephone_number?(input)
+      input =~ /^\+(\d{11})$/
+    end
+
+    class SenderInvalid < ArgumentError; end
   end
 end
