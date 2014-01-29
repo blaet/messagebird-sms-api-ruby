@@ -26,6 +26,9 @@ describe MessageBird::SMS do
     end
 
     it 'returns a new SMS object of the appropriate module' do
+      any_instance_of(MessageBird::HTTP::SMS) do |klass|
+        stub(klass).ensure_valid_sender!
+      end
       subject.new(1,2,'message',{:module => :http}).class.must_equal MessageBird::HTTP::SMS
     end
   end

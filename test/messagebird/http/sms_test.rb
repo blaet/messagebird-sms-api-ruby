@@ -19,25 +19,14 @@ describe MessageBird::HTTP::SMS do
 
   let(:subject_class){ MessageBird::HTTP::SMS }
 
-  subject{ subject_class.new('sender',3154447100,'message',{}) }
+  subject{ subject_class.new('sender',3154447100,'message') }
 
   describe '#initialize' do
-    describe '@sender' do
-      describe 'alphanumeric' do
-        it 'accepts alphanumerism' do
-
-        end
+    it 'delegates setting sender to a setter method' do
+      any_instance_of(MessageBird::HTTP::SMS) do |klass|
+        mock.proxy(klass).sender=('footest')
       end
-
-      describe 'telephone number' do
-        it 'accepts telephone numbers' do
-
-        end
-      end
-
-      it 'is limited to 11 characters' do
-
-      end
+      subject_class.new('footest',3154447100,'message')
     end
   end
 
@@ -61,14 +50,14 @@ describe MessageBird::HTTP::SMS do
     end
   end
 
-  describe '#ensure_sender_valid!' do
+  describe '#ensure_valid_sender!' do
     it 'works as designed' do
       stub(subject).sender_valid?{true}
-      subject.send :ensure_sender_valid!, 'test'
+      subject.send :ensure_valid_sender!, 'test'
 
       stub(subject).sender_valid?{false}
       assert_raises(MessageBird::HTTP::SMS::SenderInvalid){
-        subject.send :ensure_sender_valid!, 'test'
+        subject.send :ensure_valid_sender!, 'test'
       }
     end
   end

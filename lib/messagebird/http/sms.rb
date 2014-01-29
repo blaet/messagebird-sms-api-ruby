@@ -6,7 +6,7 @@ module MessageBird::HTTP
     attr_writer :username, :api_url
 
     def initialize(sender_name, recipients, message, options = {}, &block)
-      sender      = sender_name
+      self.sender = sender_name
       @recipients = format_recipients(recipients)
       @message    = URI.escape(message)
       @callback   = block
@@ -73,12 +73,12 @@ module MessageBird::HTTP
       @test_mode = bool ? 1 : 0
     end
 
-    def sender=(input)
-      ensure_sender_valid!(input)
-      @sender = input
+    def sender=(str)
+      ensure_valid_sender!(str)
+      @sender = str
     end
 
-    def ensure_sender_valid!(input)
+    def ensure_valid_sender!(input)
       raise SenderInvalid.new(input) unless sender_valid?(input)
     end
 
