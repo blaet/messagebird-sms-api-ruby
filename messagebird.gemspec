@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.authors = ["Bram de Vries"]
   s.date = "2014-01-27"
   s.description = "Implementation of the MessageBird text (sms) service API"
-  s.email = "bram.devries@nedap.com"
+  s.email = "dev@blaet.net"
   s.executables = ["messagebird_test_connection"]
   s.extra_rdoc_files = [
     "LICENSE",
@@ -48,7 +48,7 @@ Gem::Specification.new do |s|
     "test/messagebird/sms_test.rb",
     "test/messagebird_test.rb"
   ]
-  s.homepage = "http://github.com/nedap/messagebird-sms-api-ruby"
+  s.homepage = "http://github.com/blaet/messagebird-sms-api-ruby"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "2.1.11"

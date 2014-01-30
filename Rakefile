@@ -17,13 +17,12 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
     gem.name = "messagebird"
-    gem.homepage = "http://github.com/nedap/messagebird-sms-api-ruby"
+    gem.homepage = "http://github.com/blaet/messagebird-sms-api-ruby"
     gem.license = "MIT"
     gem.summary = %Q{MessageBird API for Ruby}
     gem.description = %Q{Implementation of the MessageBird SMS API for Ruby}
-    gem.email = "bram.devries@nedap.com"
+    gem.email = "dev@blaet.net"
     gem.authors = ["Bram de Vries"]
     # dependencies defined in Gemfile
   end

@@ -1,7 +1,7 @@
 [![Gem Version](https://badge.fury.io/rb/messagebird.png)](http://badge.fury.io/rb/messagebird)
-[![Code Climate](https://codeclimate.com/github/nedap/messagebird-sms-api-ruby.png)](https://codeclimate.com/github/nedap/messagebird-sms-api-ruby)
-[![Coverage Status](https://coveralls.io/repos/nedap/messagebird-sms-api-ruby/badge.png?branch=master)](https://coveralls.io/r/nedap/messagebird-sms-api-ruby?branch=master)
-[![Build Status](https://travis-ci.org/nedap/messagebird-sms-api-ruby.png?branch=master)](https://travis-ci.org/nedap/messagebird-sms-api-ruby)
+[![Code Climate](https://codeclimate.com/github/blaet/messagebird-sms-api-ruby.png)](https://codeclimate.com/github/blaet/messagebird-sms-api-ruby)
+[![Coverage Status](https://coveralls.io/repos/blaet/messagebird-sms-api-ruby/badge.png?branch=master)](https://coveralls.io/r/blaet/messagebird-sms-api-ruby?branch=master)
+[![Build Status](https://travis-ci.org/blaet/messagebird-sms-api-ruby.png?branch=master)](https://travis-ci.org/blaet/messagebird-sms-api-ruby)
 
 # MessageBird SMS API for Ruby
 Implementation of the MessageBird SMS API for Ruby.

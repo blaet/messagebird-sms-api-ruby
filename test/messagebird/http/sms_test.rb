@@ -108,18 +108,18 @@ describe MessageBird::HTTP::SMS do
   describe '#sender_string?' do
     it 'detects valid strings' do
       assert sender_string?('A')
-      assert sender_string?('StaffingAge')
+      assert sender_string?('MessageBird')
     end
 
     it 'detects invalid strings by length' do
-      refute sender_string?('StaffingAgency')
+      refute sender_string?('thiswillbreak')
       refute sender_string?('')
     end
 
     it 'detects invalid strings by characters' do
-      refute sender_string?('Nedap Flex')
-      refute sender_string?(' Nedap')
-      refute sender_string?('Nedap ')
+      refute sender_string?('blaet test')
+      refute sender_string?(' blaet')
+      refute sender_string?('blaet ')
     end
   end
 
