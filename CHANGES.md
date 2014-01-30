@@ -4,6 +4,7 @@
   - 11 alphanumeric characters
   - telephone number string consisting of "+" + 11 numbers, e.g. "+31612345678"
 
+
 0.1.2
 -----------
 - Ensure 1.8.7 compatibility
