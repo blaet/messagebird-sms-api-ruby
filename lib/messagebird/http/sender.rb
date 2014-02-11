@@ -43,11 +43,11 @@ module MessageBird::HTTP
       end
 
       def connection_factory
-        @connection_factory ||= connection_class.public_method(:new)
+        @connection_factory ||= connection_class.method(:new)
       end
 
       def response_factory
-        @response_factory ||= Response.public_method(:new)
+        @response_factory ||= Response.method(:new)
       end
 
       def local_loop
