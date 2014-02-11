@@ -3,6 +3,7 @@
 - Introduces a new config option :enabled, which is set to false by default.
   This was added to prevent test and development enviroments from establishing actual connections
   to the MessageBird servers. Connections may be enabled by setting:
+
   ```ruby
   MessageBird.configure do
     enabled true
