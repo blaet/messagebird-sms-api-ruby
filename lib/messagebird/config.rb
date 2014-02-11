@@ -13,7 +13,8 @@ module MessageBird
           :username =>    'replace_me',
           :password =>    'replace_me',
           :sender_name => 'replace_me',
-          :test_mode =>   true
+          :test_mode =>   true,
+          :local_loop =>  false
         }
       end
 

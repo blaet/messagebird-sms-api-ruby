@@ -15,6 +15,46 @@ describe MessageBird::HTTP::Sender do
     stub(mock_connection).request{:bar}
   end
 
+  describe '#connection_class' do
+    it 'returns a Net::HTTP class' do
+      subject.send(:connection_class).must_equal Net::HTTP
+    end
+
+    describe 'local_loop variable set to true' do
+      before do
+        subject.local_loop = true
+      end
+
+      after do
+        subject.local_loop = nil
+      end
+
+      it 'returns a LocalConnection class' do
+        subject.send(:connection_class).must_equal MessageBird::HTTP::LocalConnection
+      end
+    end
+  end
+
+  describe '#create_connection' do
+    it 'creates a new connection' do
+      mock(Net::HTTP).new.with_any_args{mock_connection}
+      subject.send :create_connection, uri
+    end
+
+    it 'sets the connection to SSL' do
+      mock(mock_connection).use_ssl=(true)
+      stub(Net::HTTP).new.with_any_args{mock_connection}
+      subject.send :create_connection, uri
+    end
+  end
+
+  describe '#create_request' do
+    it 'works' do
+      mock(Net::HTTP::Get).new(:bar).once
+      subject.send :create_request, :bar
+    end
+  end
+
   describe '#deliver' do
     it 'sends the given sms' do
       stub(subject).ensure_valid_sms!
@@ -39,29 +79,9 @@ describe MessageBird::HTTP::Sender do
     end
   end
 
-  describe '#create_connection' do
-    it 'creates a new connection' do
-      mock(Net::HTTP).new.with_any_args{mock_connection}
-      subject.send :create_connection, uri
-    end
-
-    it 'sets the connection to SSL' do
-      mock(mock_connection).use_ssl=(true)
-      stub(Net::HTTP).new.with_any_args{mock_connection}
-      subject.send :create_connection, uri
-    end
-  end
-
-  describe '#create_request' do
-    it 'works' do
-      mock(Net::HTTP::Get).new(:bar).once
-      subject.send :create_request, :bar
-    end
-  end
-
   describe '#response_factory' do
     it 'works' do
-      assert subject.send(:response_factory).is_a?(Proc)
+      subject.send(:response_factory).is_a?(Method)
     end
   end
 
@@ -87,11 +107,12 @@ describe MessageBird::HTTP::Sender do
       subject.send :send_sms, sms
     end
 
-    it 'creates sends the request over the connection' do
+    it 'sends the request over the connection' do
       stub(subject).create_connection.with_any_args{:foo}
       stub(subject).create_request.with_any_args{:bar}
       mock(subject).send_request(:foo, :bar){:bat}
       subject.send :send_sms, sms
     end
   end
+
 end

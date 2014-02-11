@@ -3,6 +3,7 @@ module MessageBird::HTTP
     class << self
 
       attr_writer :response_factory
+      attr_writer :local_loop
 
       def deliver(sms, &block)
         ensure_valid_sms!(sms)
@@ -27,7 +28,7 @@ module MessageBird::HTTP
       end
 
       def create_connection(uri)
-        Net::HTTP.new(uri.host, uri.port).tap do |http|
+        connection_factory.call(uri.host, uri.port).tap do |http|
           http.use_ssl = true
           # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
         end
@@ -41,8 +42,24 @@ module MessageBird::HTTP
         raise ArgumentError unless obj.is_a? MessageBird::HTTP::SMS
       end
 
+      def connection_factory
+        @connection_factory ||= connection_class.public_method(:new)
+      end
+
       def response_factory
         @response_factory ||= Response.public_method(:new)
+      end
+
+      def local_loop
+        @local_loop ||= MessageBird::Config.local_loop
+      end
+
+      def connection_class
+        if local_loop
+          LocalConnection
+        else
+          Net::HTTP
+        end
       end
 
     end
