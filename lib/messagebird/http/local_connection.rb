@@ -9,7 +9,7 @@ module MessageBird::HTTP
     end
 
     def request(obj)
-      OpenStruct.new(body: '01')
+      OpenStruct.new(:body => '01')
     end
   end
 end
