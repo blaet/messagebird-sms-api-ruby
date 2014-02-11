@@ -13,7 +13,7 @@ platform :ruby_19, :ruby_20, :ruby_21 do
   end
 
   group :development do
-    gem 'jeweler', '~> 2.0.0', :require => false
+    gem 'jeweler', '~> 2.0', :require => false
   end
 end
 
