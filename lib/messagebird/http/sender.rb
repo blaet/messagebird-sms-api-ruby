@@ -51,7 +51,10 @@ module MessageBird::HTTP
       end
 
       def local_loop
-        @local_loop ||= MessageBird::Config.local_loop
+        if @local_loop.nil?
+          @local_loop = MessageBird::Config.local_loop
+        end
+        @local_loop
       end
 
       def connection_class

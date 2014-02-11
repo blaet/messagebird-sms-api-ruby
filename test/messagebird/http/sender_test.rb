@@ -15,20 +15,17 @@ describe MessageBird::HTTP::Sender do
     stub(mock_connection).request{:bar}
   end
 
+  after do
+    subject.local_loop = true
+  end
+
   describe '#connection_class' do
     it 'returns a Net::HTTP class' do
+      subject.local_loop = false
       subject.send(:connection_class).must_equal Net::HTTP
     end
 
     describe 'local_loop variable set to true' do
-      before do
-        subject.local_loop = true
-      end
-
-      after do
-        subject.local_loop = nil
-      end
-
       it 'returns a LocalConnection class' do
         subject.send(:connection_class).must_equal MessageBird::HTTP::LocalConnection
       end
@@ -37,13 +34,13 @@ describe MessageBird::HTTP::Sender do
 
   describe '#create_connection' do
     it 'creates a new connection' do
-      mock(Net::HTTP).new.with_any_args{mock_connection}
+      mock(MessageBird::HTTP::LocalConnection).new.with_any_args{mock_connection}
       subject.send :create_connection, uri
     end
 
     it 'sets the connection to SSL' do
       mock(mock_connection).use_ssl=(true)
-      stub(Net::HTTP).new.with_any_args{mock_connection}
+      stub(MessageBird::HTTP::LocalConnection).new.with_any_args{mock_connection}
       subject.send :create_connection, uri
     end
   end
