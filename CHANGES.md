@@ -1,3 +1,17 @@
+0.1.4
+-----------
+- Introduces a new config option :enabled, which is set to false by default.
+  This was added to prevent test and development enviroments from establishing actual connections
+  to the MessageBird servers.
+
+  It may be disabled setting:
+  ```ruby
+  MessageBird.configure do
+    enabled true
+  end
+  ```
+
+
 0.1.3
 -----------
 - Sender_ID is now validated. Valid formats are:
