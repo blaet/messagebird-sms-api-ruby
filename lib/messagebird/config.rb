@@ -14,7 +14,7 @@ module MessageBird
           :password =>    'replace_me',
           :sender_name => 'replace_me',
           :test_mode =>   true,
-          :local_loop =>  true
+          :enabled =>     false
         }
       end
 

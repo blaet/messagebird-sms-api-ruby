@@ -3,7 +3,7 @@ module MessageBird::HTTP
     class << self
 
       attr_writer :response_factory
-      attr_writer :local_loop
+      attr_writer :enabled
 
       def deliver(sms, &block)
         ensure_valid_sms!(sms)
@@ -50,18 +50,18 @@ module MessageBird::HTTP
         @response_factory ||= Response.method(:new)
       end
 
-      def local_loop
-        if @local_loop.nil?
-          @local_loop = MessageBird::Config.local_loop
+      def enabled
+        if @enabled.nil?
+          @enabled = MessageBird::Config.enabled
         end
-        @local_loop
+        @enabled
       end
 
       def connection_class
-        if local_loop
-          LocalConnection
-        else
+        if enabled
           Net::HTTP
+        else
+          LocalConnection
         end
       end
 

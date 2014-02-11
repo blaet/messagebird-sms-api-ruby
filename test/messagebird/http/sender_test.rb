@@ -16,12 +16,12 @@ describe MessageBird::HTTP::Sender do
   end
 
   after do
-    subject.local_loop = true
+    subject.enabled = false
   end
 
   describe '#connection_class' do
     it 'returns a Net::HTTP class' do
-      subject.local_loop = false
+      subject.enabled = true
       subject.send(:connection_class).must_equal Net::HTTP
     end
 
